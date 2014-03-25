@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Commerce.Data.MongoCustomer">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAEAAACQAAAAIAAAEAAAAAAIAABAAAAAAIAAAAAg=</HashCode>
+      <FileName>MongoCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commerce.Data.MongoOrder">
+    <Position X="5.5" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>GAEAgAAEAAABAIAAAABAAAAAAAQgABAgAAAAAAAAAAA=</HashCode>
+      <FileName>MongoOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commerce.Data.MongoOrderItem">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAgAEAAEAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>MongoOrderItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Commerce.Data.MongoProduct">
+    <Position X="3.25" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIgBAQAAAAUAAEAASAIAAAAAAIggABAAAAgACAAAACE=</HashCode>
+      <FileName>MongoProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Commerce.Data.OrderStatus" Collapsed="true">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAACgAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MongoOrder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

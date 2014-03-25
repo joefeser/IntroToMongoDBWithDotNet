@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<model xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.1.0.0" name="CommerceModel" targetNamespace="Commerce.Data" databaseProvider="SqlServer2008" connectionString="Data Source=.;Initial Catalog=Commerce;Integrated Security=True;Pooling=False" pluralizedInDatabase="false" mediumTrustCompatibility="false" xmlns="http://namespaces.mindscape.co.nz/lightspeed">
+  <entities>
+    <entity name="Customer" identityType="Int32" cacheExpiry="0" identityColumnName="CustomerId">
+      <entityProperties>
+        <entityProperty name="FirstName" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="LastName" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Address1" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Address2" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="City" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="StateOrProvince" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Country" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Email" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <emailValidation />
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Phone" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="25" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="ef9ff503-e413-4d53-96c8-025930d8fa72" collectionName="OrdersByCustomer" backreferenceName="Customer" isNullable="false">
+          <entityMoniker name="/CommerceModel/Order" />
+        </oneToManyAssociation>
+        <oneToManyAssociation Id="ab53922f-c125-49e2-bcbf-dfc87a9691c4" collectionName="OrdersByShipTo" backreferenceName="ShipTo" isNullable="false" columnName="ShipTo">
+          <entityMoniker name="/CommerceModel/Order" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="Product" identityType="Int32" cacheExpiry="0" identityColumnName="ProductId">
+      <entityProperties>
+        <entityProperty name="BuyItNowPrice" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="EsrbAgeRating" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Feature" isNullable="true" privateSetter="false" />
+        <entityProperty name="Format" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Genre" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="HardwarePlatform" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="LargeImage" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="100" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="ListPrice" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="Manufacturer" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Model" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Height" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="Length" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="Width" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="Weight" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="PartNumber" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="ProductGroup" isNullable="true" privateSetter="false">
+          <validations>
+            <lengthValidation minimumLength="0" maximumLength="50" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Title" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="250" />
+          </validations>
+        </entityProperty>
+        <entityProperty name="Asin" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="30" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="57a4ca24-fedd-4b3f-b4ae-e999783ca3db" collectionName="OrderDetails" backreferenceName="Product" isNullable="false">
+          <entityMoniker name="/CommerceModel/OrderDetail" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="OrderDetail" identityType="Int32" cacheExpiry="0" identityColumnName="OrderDetailId">
+      <entityProperties>
+        <entityProperty name="OrderedQuantity" dataType="Int32" privateSetter="false" />
+        <entityProperty name="Quantity" dataType="Int32" privateSetter="false" />
+        <entityProperty name="UnitPrice" dataType="Decimal" privateSetter="false" />
+      </entityProperties>
+    </entity>
+    <entity name="Order" identityType="Int32" cacheExpiry="0" tableName="Orders" identityColumnName="OrderId">
+      <entityProperties>
+        <entityProperty name="OrderDate" dataType="DateTime" privateSetter="false" />
+        <entityProperty name="OrderTotal" dataType="Decimal" privateSetter="false" />
+        <entityProperty name="Status" dataType="Byte" privateSetter="false" />
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="8986d692-3eb9-41cf-ad2f-85346c60d5d4" collectionName="OrderDetails" backreferenceName="Order" isNullable="false">
+          <entityMoniker name="/CommerceModel/OrderDetail" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="Category" identityType="Int32" cacheExpiry="0" identityColumnName="CategoryId">
+      <entityProperties>
+        <entityProperty name="CategoryName" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="f6f97fe7-69f5-472e-8719-b7a359a5953f" collectionName="Products" backreferenceName="Category" isNullable="true">
+          <entityMoniker name="/CommerceModel/Product" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+    <entity name="Publisher" identityType="Int32" cacheExpiry="0" identityColumnName="PublisherId">
+      <entityProperties>
+        <entityProperty name="PublisherName" privateSetter="false">
+          <validations>
+            <presenceValidation />
+            <lengthValidation minimumLength="0" maximumLength="75" />
+          </validations>
+        </entityProperty>
+      </entityProperties>
+      <oneToManyAssociations>
+        <oneToManyAssociation Id="0bed52a4-a375-4322-a0c0-4091ba0dc665" collectionName="Products" backreferenceName="Publisher" isNullable="true">
+          <entityMoniker name="/CommerceModel/Product" />
+        </oneToManyAssociation>
+      </oneToManyAssociations>
+    </entity>
+  </entities>
+</model>
