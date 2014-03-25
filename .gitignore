@@ -30,3 +30,4 @@ _ReSharper*/
 Commerce.Data/packages/*/*
 packages/*/*
 Commerce.Database/Commerce.Database.dbmdl
+data/products.xml

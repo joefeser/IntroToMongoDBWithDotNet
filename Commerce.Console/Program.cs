@@ -15,7 +15,7 @@ namespace Commerce.ConsoleApp {
         static void Main(string[] args) {
             var serialList = new XmlSerializer(typeof(List<MongoProduct>));
             var serial = new XmlSerializer(typeof(MongoProduct));
-            var path = @"c:\test\product\";
+            var path = @"..\..\..\data\";
 
             var list = new List<MongoProduct>();
 
