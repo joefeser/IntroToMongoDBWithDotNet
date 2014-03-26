@@ -23,31 +23,25 @@ namespace Commerce.ConsoleApp {
                 list = serialList.Deserialize(fs) as List<MongoProduct>;
             }
 
-            //PopulateSqlDatabase(list);
 
             //must be done first
             var collection = Collections.ProductCollection;
 
 
+            //LoadMongoData(list);
+
+            //PopulateSqlDatabase(list);
+
             //Lets find and Modify
 
-            CreateMongoDbOrder();
-            //CreateSqlOrder();
+            //CreateMongoDbOrder();
+            CreateSqlOrder();
 
             //AddColumn();
             //RemoveColumn();
             //UpdateDocumentsWithNewKeyword();
             //UpdateAllDocuments();
             //FindAndModify();
-
-
-            //var sw = new Stopwatch();
-            //sw.Start();
-
-            //Collections.ProductCollection.InsertBatch<Product>(list);
-
-            //sw.Stop();
-            //System.Console.WriteLine(sw.ElapsedMilliseconds);
 
             //list.First().ASIN;
 
@@ -83,14 +77,75 @@ namespace Commerce.ConsoleApp {
 
             var product = new MongoProduct() { };
 
-            Collections.ProductCollection.Save<MongoProduct>(product);
+            //Collections.ProductCollection.Save<MongoProduct>(product);
 
             System.Console.ReadLine();
 
         }
 
+        private static void LoadMongoData(List<MongoProduct> list) {
+
+            var sw = new Stopwatch();
+            sw.Start();
+
+            Collections.ProductCollection.InsertBatch<MongoProduct>(list);
+
+            sw.Stop();
+            System.Console.WriteLine(sw.ElapsedMilliseconds);
+            Console.ReadLine();
+        }
+
         private static void CreateSqlOrder() {
-            throw new NotImplementedException();
+            using (var uow = CommerceModelUnitOfWork.UnitOfWork()) {
+                //lets grab up a few products.
+                var products = new List<Product>();
+                var asinList = new string[] {"B00000J1EQ",
+                                        "B00002CF9M",
+                                        "B00002S932",
+                                        "B00004UE3D",
+                                        "B00004XSAE" };
+
+                foreach (var asin in asinList) {
+                    var query = Query<Product>
+                        .Where(item => item.Asin == asin);
+                    var product = uow.Products.FirstOrDefault(item => item.Asin == asin);
+                    products.Add(product);
+                }
+
+                var customer = new Customer() {
+                    Address1 = "123 Main Street",
+                    City = "Simpsonville",
+                    Country = "US",
+                    Email = "me@home.com",
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Phone = "555-867-5309",
+                    StateOrProvince = "SC"
+                };
+
+                uow.Add(customer);
+
+                var order = new Order() {
+                    Customer = customer,
+                    OrderDate = DateTime.Now,
+                    ShipTo = customer,
+                    Status = (int)OrderStatus.New
+                };
+
+                uow.Add(order);
+
+                foreach (var product in products) {
+                    var orderDetail = new OrderDetail() {
+                        Order = order,
+                        Product = product,
+                        OrderedQuantity = 2,
+                        Quantity = 2,
+                        UnitPrice = 19.95m
+                    };
+                    uow.Add(orderDetail);
+                }
+                uow.SaveChanges();
+            }
         }
 
         private static void CreateMongoDbOrder() {
@@ -162,6 +217,8 @@ namespace Commerce.ConsoleApp {
                     UnitPrice = 19.95m
                 });
             }
+
+            Collections.OrderCollection.Save(order);
 
         }
 
@@ -308,6 +365,7 @@ namespace Commerce.ConsoleApp {
                 sw.Stop();
 
                 Console.WriteLine(sw.ElapsedMilliseconds);
+                Console.ReadLine();
             }
         }
 
